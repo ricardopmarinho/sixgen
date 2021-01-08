@@ -1,0 +1,109 @@
+version 2
+run SimpleRREQ-0-20201214-21:43:39-7561
+attr configname SimpleRREQ
+attr datetime 20201214-21:43:39
+attr experiment SimpleRREQ
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network SimpleRREQ
+attr processid 7561
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.wlan[*].radio.transmitter.communicationRange 240m
+param **.sender.numApps 1
+param **.sender.app[0].typename "\"PingApp\""
+param **.sender.app[0].startTime uniform(1s,5s)
+param **.sender.app[0].printPing true
+param **.sender.app[0].destAddr "\"receiver(ipv4)\""
+param *.host[*].energyStorage.typename "\"SimpleEpEnergyStorage\""
+param *.host[*].wlan[*].radio.energyConsumer.typename "\"StateBasedEpEnergyConsumer\""
+param *.host[*].energyManagement.typename "\"SimpleEpEnergyManagement\""
+param *.host[*].energyStorage.nominalCapacity 0.05J
+param *.host[*].energyManagement.nodeShutdownCapacity "0.1 * energyStorage.nominalCapacity"
+param *.host[*].energyManagement.nodeStartCapacity "0.5 * energyStorage.nominalCapacity"
+param *.host[*].energyStorage.initialCapacity "uniform(0.1 * energyStorage.nominalCapacity, energyStorage.nominalCapacity)"
+param *.host[*].energyGenerator.typename "\"AlternatingEpEnergyGenerator\""
+param *.host[*].energyGenerator.powerGeneration 4mW
+param *.host[*].energyGenerator.sleepInterval exponential(25s)
+param *.host[*].energyGenerator.generationInterval exponential(25s)
+param **.wlan[*].typename "\"AckingWirelessInterface\""
+param **.wlan[*].bitrate 2Mbps
+param **.wlan[*].mac.headerLength 23B
+param **.wlan[*].radio.typename "\"UnitDiskRadio\""
+param **.wlan[*].radio.transmitter.headerLength 96b
+param **.wlan[*].radio.transmitter.communicationRange 250m
+param **.wlan[*].radio.transmitter.interferenceRange 0m
+param **.wlan[*].radio.transmitter.detectionRange 0m
+param **.wlan[*].radio.receiver.ignoreInterference true
+param *.numHosts 20
+param **.host[*].mobility.typename "\"StationaryMobility\""
+param **.mobility.constraintAreaMinZ 0m
+param **.mobility.constraintAreaMaxZ 0m
+param **.mobility.constraintAreaMinX 0m
+param **.mobility.constraintAreaMinY 0m
+param **.mobility.constraintAreaMaxX 600m
+param **.mobility.constraintAreaMaxY 600m
+param *.host[0].numApps 1
+param *.host[0].app[0].typename "\"PingApp\""
+param *.host[0].app[0].startTime uniform(1s,5s)
+param *.host[0].app[0].printPing true
+param **.wlan[*].bitrate 2Mbps
+param **.hasStatus true
+
+vector 0 SimpleRREQ.sender.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 2 SimpleRREQ.receiver.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 3 SimpleRREQ.sender.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 4 SimpleRREQ.sender.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 5 SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 6 SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 7 SimpleRREQ.receiver.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 8 SimpleRREQ.receiver.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+0	0	0	0
+0	0	0	0
+0	0	0	4
+1	0	0	0
+1	0	0	0
+1	0	0	4
+2	0	0	0
+2	0	0	0
+2	0	0	4
+3	0	0	1
+4	0	0	1
+5	0	0	1
+6	0	0	1
+7	0	0	1
+8	0	0	1
+
