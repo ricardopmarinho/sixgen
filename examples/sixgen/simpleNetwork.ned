@@ -27,7 +27,11 @@ network simpleNetwork
 {
     parameters:
         int numHost = default(2);
+        int sprayFraction = default(10);
         string networkType;
+        bool backoffEnabled;
+        bool mlEnable;
+        int mlThreshold = default(300);
     submodules:
         Oracle: Oracle {
             parameters:
